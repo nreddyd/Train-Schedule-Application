@@ -33,12 +33,7 @@ $("#addTrain").on("click", function(event) {
     firstTrain: startTrain,
     frequency: trainFrequency
   };
-  // console.log(trainName);
-  // console.log(trainDest);
-  // console.log(startTrain);
-  // console.log(trainFrequency);
   database.ref().push(newTrain);
-  // console.log(newTrain);
 
   $("#trainName").val("");
   $("#destination").val("");
@@ -61,42 +56,24 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(firstTrain);
   console.log(frequency);
 
-  // Prettify the employee start
-  // var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+  var tRemainder =
+    moment().diff(moment.unix(firstTrain), "minutes") % frequency;
+  var tMinutes = frequency - tRemainder;
 
-  // Calculate the months worked using hardcore math
-  // To calculate the months worked
-  // var empMonths = moment().diff(moment(empStart, "X"), "months");
-  // console.log(empMonths);
-
-  // Calculate the total billed rate
-  // var empBilled = empMonths * empRate;
-  // console.log(empBilled);
+  // To calculate the arrival time, add the tMinutes to the currrent time
+  var tArrival = moment()
+    .add(tMinutes, "m")
+    .format("hh:mm A");
 
   // Create the new row
   var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(destination),
-    $("<td>").text(firstTrain),
     $("<td>").text(frequency),
-    $("<td>").text(" ")
+    $("<td>").text(tArrival),
+    $("<td>").text(tMinutes)
   );
 
-  // console.log(newRow);
   // Append the new row to the table
   $("#train-schedule > tbody").append(newRow);
-
-  // $("#train-schedule > tbody").append(
-  //   "<tr><td>" +
-  //     trainName +
-  //     "</td><td>" +
-  //     destination +
-  //     "</td><td class='min'>" +
-  //     frequency +
-  //     "</td><td class='min'>" +
-  //     firstTrain +
-  //     "</td><td class='min'>" +
-  //     firstTrain +
-  //     "</td></tr>"
-  // );
 });

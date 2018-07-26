@@ -1,0 +1,67 @@
+body {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  clear: both;
+  background-image: url("../images/BG.png");
+  background-size: cover;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.jumbotron {
+  background-color: rosybrown;
+  text-align: center;
+}
+
+#logo {
+  float: left;
+  width: 15%;
+}
+
+#header {
+  font-family: "Special Elite", cursive;
+}
+h1 {
+  background-color: rosybrown;
+  font-family: "Playfair Display SC", serif;
+}
+table {
+  width: 100%;
+  /* border: solid 2px; */
+}
+#tablecontainer,
+#formcontainer {
+  border: solid 2px;
+}
+form {
+  margin: 10px;
+}
+th {
+  height: 50px;
+}
+
+label {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+footer,
+.push {
+  height: 100px;
+}
+
+footer {
+  /* Box-model */
+  padding: 10px 0;
+
+  /* Positioning */
+  clear: both;
+  font-size: 12px;
+
+  /* Typography */
+  /* color: #ccc; */
+  text-align: center;
+
+  /* Visual */
+  /* background: #666; */
+  border-top: 8px;
+}
